@@ -1,42 +1,104 @@
-#root {
-  max-width: 1280px;
+/* Container principal - centraliza tudo e dá um limite de largura */
+.dictionary-app {
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left; /* Alinhamento do texto para a esquerda, estilo Google */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Barra de pesquisa */
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 50px; /* Deixa arredondado */
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.search-input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 10px rgba(100, 108, 255, 0.2); /* Brilho azul ao clicar */
 }
 
-.card {
-  padding: 2em;
+/* Cabeçalho da Palavra (Onde fica a palavra e o botão de áudio) */
+.word-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+/* A Palavra Principal - Usamos fonte Serifada (estilo jornal/livro) */
+.word-title {
+  font-size: 4rem;
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: bold;
+}
+
+/* A pronúncia (aquela escrita esquisita, ex: /riˈækt/) */
+.word-phonetic {
+  font-size: 1.5rem;
+  color: #646cff; /* Azulzinho */
+  margin-top: 0.5rem;
+}
+
+/* Botão de Tocar Áudio */
+.audio-button {
+  background-color: #e0e7ff; /* Fundo azul claro */
+  color: #646cff; /* Ícone azul escuro */
+  border-radius: 50%; /* Deixa redondinho */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.audio-button:hover {
+  background-color: #c7d2fe;
+}
+
+/* Subtítulo: Substantivo, Verbo, etc. */
+.part-of-speech {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Aquela linha horizontal bonitinha do lado do verbo/substantivo */
+.part-of-speech::after {
+  content: "";
+  height: 1px;
+  background-color: #e5e5e5;
+  flex-grow: 1; /* Faz a linha ocupar o resto do espaço */
+}
+
+/* Lista de significados */
+.meanings-list {
+  padding-left: 2rem; /* Afasta a lista da borda */
+}
+
+.meanings-list li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  
+}
+
+/* Exemplos de uso nas frases */
+.example-text {
+  color: #a3a3a3; /* Cinza claro para não roubar a atenção */
+  font-style: italic;
+  display: block; /* Pula para a linha de baixo */
+  margin-top: 0.3rem;
 }
