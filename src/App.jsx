@@ -1,33 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  let arraySinonimos = []
+  const [sinonimo, setSinonimo] = useState([])
+  const [palavra, setPalavra] = useState("")
+  const pegarSinonimos = async () => {
+    try{
+      const resposta =  await axios.get(`https://freedictionaryapi.com/api/v1/entries/en/${palavra}`)
+      arraySinonimos = resposta.data.entries[0].synonyms
+      setSinonimo(arraySinonimos)
+      console.log(arraySinonimos)
+    } catch (error){
+      console.log(error)
+    }}
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <input placeholder="Any word..." onChange={(event) => {
+        setPalavra(event.target.value)
+      }}></input>
+      {sinonimo.map((sinonimos, index) => 
+        <p key={index}>{sinonimos}</p>
+      )}
+      <button onClick={pegarSinonimos}>Show Synonyms</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
